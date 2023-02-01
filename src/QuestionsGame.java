@@ -8,9 +8,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class QuestionsGame {
     // Your code here
+
 
 
     private static class QuestionNode {
@@ -33,12 +35,23 @@ public class QuestionsGame {
         QuestionsGame a = new QuestionsGame(object);
     }
 
-    public QuestionsGame(String input){
-
+    public QuestionsGame(Scanner input){
     }
     public void saveQuestions(PrintStream output){
         Stack<QuestionNode> s = new Stack<>();
-        s.push();
+        //s.push(root);
+
+        while(!s.isEmpty()){
+            QuestionNode current = s.pop();
+            output.print(current.q);
+
+            if (current.no != null){
+                s.push(current.no);
+            }
+            if (current.yes != null){
+                s.push(current.yes);
+            }
+        }
     }
 
     public void play(){
