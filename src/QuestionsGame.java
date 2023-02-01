@@ -15,8 +15,8 @@ public class QuestionsGame {
 
     private static class QuestionNode {
         public final String q;
-        public QuestionNode yes;
-        public QuestionNode no;
+        public final QuestionNode yes;
+        public final QuestionNode no;
 
         public QuestionNode(String question){
             q = question;
@@ -25,8 +25,8 @@ public class QuestionsGame {
         }
         public QuestionNode(String question, QuestionNode yes, QuestionNode no){
             q = question;
-            this.yes = left;
-            this.no = right;
+            this.yes = yes;
+            this.no = no;
         }
     }
     public QuestionsGame(String object){
@@ -37,7 +37,8 @@ public class QuestionsGame {
 
     }
     public void saveQuestions(PrintStream output){
-
+        Stack<QuestionNode> s = new Stack<>();
+        s.push();
     }
 
     public void play(){
