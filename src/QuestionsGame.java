@@ -12,6 +12,7 @@ import java.util.Stack;
 
 public class QuestionsGame {
     // Your code here
+    QuestionNode root;
 
 
 
@@ -32,6 +33,7 @@ public class QuestionsGame {
         }
     }
     public QuestionsGame(String object){
+        //File file = new File("") fix pls :)
         QuestionsGame a = new QuestionsGame(object);
     }
 
@@ -43,7 +45,7 @@ public class QuestionsGame {
 
         while(!s.isEmpty()){
             QuestionNode current = s.pop();
-            output.print(current.q);
+            output.println(current.q);
 
             if (current.no != null){
                 s.push(current.no);
@@ -55,7 +57,47 @@ public class QuestionsGame {
     }
 
     public void play(){
+        QuestionNode current = root;
+        while(current.yes != null || current.no != null){
+            System.out.println("Question: "+current.q);
+            Scanner keyboard = new Scanner(System.in);
+            if(keyboard.nextLine().trim().toLowerCase().startsWith("y") && current.yes != null){
+                current = current.yes;
+            }
+            else{
+                if(current.no != null) {
+                    current = current.no;
+                }
+            }
+        }
+        if(current.yes == null && current.no == null){
+            String ans = current.q;
+            System.out.println(ans);
+            System.out.println("Is this the object you were thinking of? Y/N\n");
+            Scanner keyboard = new Scanner(System.in);
+            if(keyboard.nextLine().trim().toLowerCase().startsWith("y")){
+                System.out.println("Hooray! I guessed your object!! :P");
+            }
+            else{
+                System.out.println("You've beat me!\n");
+                System.out.println("What object were you thinking of?");
+                String obj = keyboard.next();
+                //TODO: save obj
 
+                System.out.println("Input a question to distinguish this object from "+ans);
+                String obj = keyboard.next();
+                //TODO: save this too
+                System.out.println("Was your object the yes or no answer to the question you just inputted? Y/N");
+                if(keyboard.nextLine().trim().toLowerCase().startsWith("y")){
+                    //yes
+                }
+                else{
+                    //no
+                }
+                //TODO: add all of that to the tree & file
+
+            }
+        }
     }
 
 
