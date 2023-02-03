@@ -57,7 +57,7 @@ class BinaryTreePrinter {
             String pointerRight = "[R]--";
             String pointerLeft = (node.no != null) ? "[L]--" : "[L]--";
 
-            traverseNodes(sb, paddingForBoth, pointerLeft, node.yes, node.right != null);
+            traverseNodes(sb, paddingForBoth, pointerLeft, node.yes, node.no != null);
             traverseNodes(sb, paddingForBoth, pointerRight, node.no, false);
 
         }

@@ -85,7 +85,7 @@ public class QuestionsGame {
                 //TODO: save obj
 
                 System.out.println("Input a question to distinguish this object from "+ans);
-                String obj = keyboard.next();
+                String obj1 = keyboard.next();
                 //TODO: save this too
                 System.out.println("Was your object the yes or no answer to the question you just inputted? Y/N");
                 if(keyboard.nextLine().trim().toLowerCase().startsWith("y")){
