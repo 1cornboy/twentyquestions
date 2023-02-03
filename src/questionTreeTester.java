@@ -10,7 +10,7 @@ public class questionTreeTester
 
         Scanner file = new Scanner(new File("spec-questions.txt"));
         QuestionsGame theTree = new QuestionsGame(file);
-        printer.printPreOrder(System.out, theTree.overallRoot); 
+        printer.printPreOrder(System.out, theTree.root);
     }
 }
 
@@ -26,14 +26,14 @@ class BinaryTreePrinter {
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append(root.data);
+        sb.append(root.q);
         
         String pointerRight ="[R]--";
-        String pointerLeft = (root.right != null) ? "[L]--" : "[L]--";
+        String pointerLeft = (root.no != null) ? "[L]--" : "[L]--";
 
-        traverseNodes(sb, "", pointerLeft, root.left, root.right != null);
+        traverseNodes(sb, "", pointerLeft, root.no, root.yes != null);
         
-        traverseNodes(sb, "", pointerRight, root.right, false);
+        traverseNodes(sb, "", pointerRight, root.no, false);
 
         return sb.toString();
     }
@@ -44,7 +44,7 @@ class BinaryTreePrinter {
             sb.append("\n");
             sb.append(padding);
             sb.append(pointer);
-            sb.append(node.data);
+            sb.append(node.q);
 
             StringBuilder paddingBuilder = new StringBuilder(padding);
             if (hasRightSibling) {
@@ -55,10 +55,10 @@ class BinaryTreePrinter {
 
             String paddingForBoth = paddingBuilder.toString();
             String pointerRight = "[R]--";
-            String pointerLeft = (node.right != null) ? "[L]--" : "[L]--";
+            String pointerLeft = (node.no != null) ? "[L]--" : "[L]--";
 
-            traverseNodes(sb, paddingForBoth, pointerLeft, node.left, node.right != null);
-            traverseNodes(sb, paddingForBoth, pointerRight, node.right, false);
+            traverseNodes(sb, paddingForBoth, pointerLeft, node.yes, node.right != null);
+            traverseNodes(sb, paddingForBoth, pointerRight, node.no, false);
 
         }
 

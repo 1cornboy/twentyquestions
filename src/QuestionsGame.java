@@ -16,7 +16,7 @@ public class QuestionsGame {
 
 
 
-    private static class QuestionNode {
+    public static class QuestionNode {
         public final String q;
         public final QuestionNode yes;
         public final QuestionNode no;
