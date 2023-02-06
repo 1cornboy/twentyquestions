@@ -33,19 +33,28 @@ public class QuestionsGame {
         }
     }
     public QuestionsGame(String object){
-        //File file = new File("") fix pls :)
+        File file = new File("blankfile.txt");
         QuestionsGame a = new QuestionsGame(object);
     }
 
     public QuestionsGame(Scanner input){
+
     }
     public void saveQuestions(PrintStream output){
         Stack<QuestionNode> s = new Stack<>();
-        //s.push(root);
+        Stack<String> str = new Stack<>();
+        s.push(root);
 
         while(!s.isEmpty()){
             QuestionNode current = s.pop();
-            output.println(current.q);
+            if (current.yes == null && current.no == null){
+                output.println("A:");
+            }
+            else{
+                output.println("Q:");
+            }
+            output.println(current);
+
 
             if (current.no != null){
                 s.push(current.no);
@@ -85,7 +94,7 @@ public class QuestionsGame {
                 //TODO: save obj
 
                 System.out.println("Input a question to distinguish this object from "+ans);
-                String obj1 = keyboard.next();
+                String qst = keyboard.next();
                 //TODO: save this too
                 System.out.println("Was your object the yes or no answer to the question you just inputted? Y/N");
                 if(keyboard.nextLine().trim().toLowerCase().startsWith("y")){
